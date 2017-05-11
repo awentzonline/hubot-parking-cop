@@ -1,8 +1,8 @@
 # Description:
 #   Parking cop tells you who's parking in your spot.
 #
-# Usage:
-#   @parkingcop bust <license-plate-number>
+# Commands:
+#   hubot bust <license-plate> - Notifies the owner of the car with that plate.
 
 async = require 'async'
 GoogleSpreadsheet = require 'google-spreadsheet'

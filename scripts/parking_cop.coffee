@@ -3,6 +3,7 @@
 #
 # Commands:
 #   hubot bust <license-plate> - Notifies the owner of the car with that plate.
+#   hubot refresh - Download the latest plate information. This also happens automatically every day.
 
 async = require 'async'
 GoogleSpreadsheet = require 'google-spreadsheet'

@@ -66,7 +66,7 @@ module.exports = (robot) ->
     licenseNumber = res.match[2]
     owner = lookupPlate(licenseNumber)
     if owner
-      res.reply "@#{owner} MOVE YOUR CAR, CREEP"
+      res.reply "Please move your car, @#{owner}. Have a lawful day!"
     else
       res.reply "I don't recognize the license plate #{licenseNumber}"
 

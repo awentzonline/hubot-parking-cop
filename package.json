@@ -5,6 +5,7 @@
   "author": "Adam Wentz <adam.wentz@dollarshaveclub.com>",
   "description": "Figure out who's parking in your space",
   "dependencies": {
+    "async": "^2.4.0",
     "google-spreadsheet": "^2.0.3",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.1",

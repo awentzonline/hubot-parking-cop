@@ -67,7 +67,9 @@ module.exports = (robot) ->
     licenseNumber = res.match[2]
     owner = lookupPlate(licenseNumber)
     if owner
-      res.send "@#{owner} Please move your car. Have a lawful day!"
+      ownerData = robot.adapter.client.rtm.dataStore.getDMByName owner
+      robot.messageRoom ownerData.id, "Please move your car. Have a lawful day!"
+      res.reply "I have notifed the owner."
     else
       res.reply "I don't recognize the license plate #{licenseNumber}"
 

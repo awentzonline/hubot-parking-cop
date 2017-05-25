@@ -14,6 +14,8 @@ GOOGLE_CREDS = {
   private_key: process.env.PARKINGCOP_PRIVATE_KEY
 }
 UPDATE_PLATE_LOOKUP_INTERVAL = 1000 * 60 * 60 * 8  # 8 hours
+PLATE_FIELD = process.env.PARKINGCOP_PLATE_FIELD || 'plate'
+SLACK_USER_FIELD = process.env.PARKINGCOP_NAME_FIELD || 'name'
 
 PLATE_LOOKUP = {}
 updatePlateLookup = () ->
@@ -46,7 +48,9 @@ updatePlateLookup = () ->
         else
           PLATE_LOOKUP = {}
           rows.forEach((row) ->
-            PLATE_LOOKUP[normalizePlate(row.plate)] = formatSlackName(row.name)
+            thisPlate = normalizePlate(row[PLATE_FIELD])
+            if thisPlate
+              PLATE_LOOKUP[thisPlate] = formatSlackName(row[SLACK_USER_FIELD])
           )
           console.log PLATE_LOOKUP
       )

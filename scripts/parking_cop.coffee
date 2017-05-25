@@ -72,8 +72,12 @@ module.exports = (robot) ->
     owner = lookupPlate(licenseNumber)
     if owner
       user = robot.adapter.client.rtm.dataStore.getUserByName owner
-      robot.messageRoom user.id, "Please move your car. Have a lawful day."
-      res.reply "I have notifed the owner. Have a lawful day."
+      if user
+        robot.messageRoom user.id, "Please move your car. Have a lawful day."
+        res.reply "I have notifed the owner. Have a lawful day."
+      else
+        console.log "Plate '#{licenseNumber}' has no owner"
+        res.reply "I recognize that plate but can't find the owner."
     else
       res.reply "I don't recognize the license plate #{licenseNumber}"
 
